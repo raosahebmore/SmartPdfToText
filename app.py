@@ -33,10 +33,6 @@ server = app.server
 baseheight = 1240
 UPLOAD_DIRECTORY = "/assets"
 
-if not os.path.exists(UPLOAD_DIRECTORY):
-    os.makedirs(UPLOAD_DIRECTORY)
-
-
 # Normally, Dash creates its own Flask server internally. By creating our own,
 # we can create a route for downloading files directly:
 server = Flask(__name__)
@@ -46,7 +42,7 @@ app = dash.Dash(server=server)
 @server.route("/download/<path:path>")
 def download(path):
     """Serve a file from the upload directory."""
-    return send_from_directory(UPLOAD_DIRECTORY, path, as_attachment=True)
+    return send_from_directory('assets', path, as_attachment=True)
 
 
 app.layout = html.Div(
