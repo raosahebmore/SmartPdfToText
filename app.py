@@ -37,7 +37,9 @@ UPLOAD_DIRECTORY = "/assets"
 # we can create a route for downloading files directly:
 server = Flask(__name__)
 app = dash.Dash(server=server)
-
+templateDir = os.path.dirname(__file__)
+TEMPLATE_DIRS = (
+    os.path.join(templateDir, "templates")
 
 @server.route("/download/<path:path>")
 def download(path):
@@ -76,15 +78,15 @@ app.layout = html.Div(
 def save_file(name, content):
     """Decode and store a file uploaded with Plotly Dash."""
     data = content.encode("utf8").split(b";base64,")[1]
-    with open(os.path.join(UPLOAD_DIRECTORY, name), "wb") as fp:
+    with open(os.path.join(TEMPLATE_DIRS, name), "wb") as fp:
         fp.write(base64.decodebytes(data))
 
 
 def uploaded_files():
     """List the files in the upload directory."""
     files = []
-    for filename in os.listdir(UPLOAD_DIRECTORY):
-        path = os.path.join(UPLOAD_DIRECTORY, filename)
+    for filename in os.listdir(templateDir):
+        path = os.path.join(TEMPLATE_DIRS, filename)
         if os.path.isfile(path):
             files.append(filename)
     return files
@@ -109,7 +111,7 @@ def update_output(uploaded_filenames, uploaded_file_contents):
                 #print('Filetype is perfect')
                 save_file(name, data)
                 #print('jghjghjg hjhjhjh hhkhhjhj bnbjbnb')
-                path = os.path.join(UPLOAD_DIRECTORY, name)
+                path = os.path.join(TEMPLATE_DIRS, name)
                 doc = fitz.open(path) 
                 page = doc.loadPage(0)
                 img=page.getPixmap()
