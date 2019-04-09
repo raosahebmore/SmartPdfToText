@@ -41,11 +41,6 @@ templateDir = os.path.dirname(__file__)
 TEMPLATE_DIRS = (
     os.path.join(templateDir, "templates")
 
-@server.route("/download/<path:path>")
-def download(path):
-    """Serve a file from the upload directory."""
-    return send_from_directory('assets', path, as_attachment=True)
-
 
 app.layout = html.Div(
     [
@@ -90,12 +85,6 @@ def uploaded_files():
         if os.path.isfile(path):
             files.append(filename)
     return files
-
-
-def file_download_link(filename):
-    """Create a Plotly Dash 'A' element that downloads a file from the app."""
-    location = "/download/{}".format(urlquote(filename))
-    return location
 
 
 @app.callback(
