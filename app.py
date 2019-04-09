@@ -127,12 +127,12 @@ def update_output(uploaded_filenames, uploaded_file_contents):
                 img4 = img3.resize((wsize, baseheight), Image.ANTIALIAS)
                 imagetext = pytesseract.image_to_string(img4)
                 print(imagetext)
-				return imagetext
+		return imagetext
                 
                 
             else:
                 print('filetype is Wrong')
-				return "filetype is Wrong"
+		return "filetype is Wrong"
   
   
 
