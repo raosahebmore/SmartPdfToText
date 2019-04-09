@@ -1,14 +1,12 @@
 import base64
 import os
 from urllib.parse import quote as urlquote
-
 from flask import Flask, send_from_directory
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import fitz
-import cv2
 import pytesseract
 import numpy as np
 from PIL import Image
