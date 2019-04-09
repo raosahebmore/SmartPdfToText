@@ -8,7 +8,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import fitz
-import matplotlib.pyplot as plt
 import cv2
 import pytesseract
 import numpy as np
