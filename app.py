@@ -31,7 +31,7 @@ server = app.server
 #US_AG_URL = 'https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv'
 
 baseheight = 1240
-UPLOAD_DIRECTORY = "/project/app_uploaded_files"
+UPLOAD_DIRECTORY = "/assets"
 
 if not os.path.exists(UPLOAD_DIRECTORY):
     os.makedirs(UPLOAD_DIRECTORY)
