@@ -38,8 +38,8 @@ UPLOAD_DIRECTORY = "/assets"
 server = Flask(__name__)
 app = dash.Dash(server=server)
 templateDir = os.path.dirname(__file__)
-TEMPLATE_DIRS = (
-    os.path.join(templateDir, "templates")
+TEMPLATE_DIRS = (os.path.join(templateDir, "templates"))
+    
 
 
 app.layout = html.Div(
