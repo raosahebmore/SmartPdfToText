@@ -67,7 +67,7 @@ app.layout = html.Div(
         html.H2("Extracted Text",style={"textAlign": "center"}),
         html.H3(id="file-list"),
     ],
-    style={"max-width": "500px",style={"textAlign": "center"}},
+    style={"max-width": "500px","textAlign": "center"},
 )
 
 
