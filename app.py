@@ -45,7 +45,7 @@ TEMPLATE_DIRS = (os.path.join(templateDir, "templates"))
 
 app.layout = html.Div(
     [
-        html.H1("Smart Pdf to Text Convertor"),
+        html.H1("Smart Pdf to Text Convertor",style={"textAlign": "center"}),
         html.H2("Upload Pdf",style={"textAlign": "center"}),
         dcc.Upload(
             id="upload-data",
@@ -67,7 +67,7 @@ app.layout = html.Div(
         html.H2("Extracted Text",style={"textAlign": "center"}),
         html.H3(id="file-list"),
     ],
-    style={"max-width": "500px"},
+    style={"max-width": "500px",style={"textAlign": "center"}},
 )
 
 
