@@ -4,14 +4,6 @@
     $ pyenv activate pytesseract-server
 
 
-    $ make pip
-
-
-    $ make run-dev
-
-
-- [Google Tesseract OCR](https://github.com/tesseract-ocr/tesseract)
-- [pytesseract](https://github.com/madmaze/pytesseract)
 
 
 
