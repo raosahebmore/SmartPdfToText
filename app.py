@@ -13,10 +13,11 @@ import numpy as np
 from PIL import Image
 import io
 
-pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
+
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.config['suppress_callback_exceptions']=True
+pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
 
 
 
@@ -73,7 +74,7 @@ app.layout = html.Div(
 def save_file(name, content):
     """Decode and store a file uploaded with Plotly Dash."""
     data = content.encode("utf8").split(b";base64,")[1]
-    with open(os.path.join(TEMPLATE_DIRS, name), "wb") as fp:
+    with open(os.path.join('/app/', name), "wb") as fp:
         fp.write(base64.decodebytes(data))
 
 
@@ -81,7 +82,7 @@ def uploaded_files():
     """List the files in the upload directory."""
     files = []
     for filename in os.listdir(templateDir):
-        path = os.path.join(TEMPLATE_DIRS, filename)
+        path = os.path.join('/app/', filename)
         if os.path.isfile(path):
             files.append(filename)
     return files
@@ -100,7 +101,7 @@ def update_output(uploaded_filenames, uploaded_file_contents):
                 #print('Filetype is perfect')
                 save_file(name, data)
                 #print('jghjghjg hjhjhjh hhkhhjhj bnbjbnb')
-                path = os.path.join(TEMPLATE_DIRS, name)
+                path = os.path.join('/app/', name)
                 doc = fitz.open(path) 
                 page = doc.loadPage(0)
                 img=page.getPixmap()
@@ -119,4 +120,4 @@ def update_output(uploaded_filenames, uploaded_file_contents):
 
 if __name__ == '__main__':
 
-    app.run_server(debug=True)
+app.run_server(debug=True)
