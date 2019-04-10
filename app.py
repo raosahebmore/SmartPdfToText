@@ -13,7 +13,7 @@ import numpy as np
 from PIL import Image
 import io
 
-
+pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.config['suppress_callback_exceptions']=True
